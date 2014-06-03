@@ -19,7 +19,7 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
         { name: tweet["username"], body: CGI.unescapeHTML(tweet["twit"]) }
       end
     end
-    send_event('twitter_mentions', comments: tweets)
+    send_event('stocktwits_mentions', comments: tweets)
   rescue
   end
 end

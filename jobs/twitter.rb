@@ -16,7 +16,7 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
     tweets = JSON.parse((URI.parse("http://ec2-54-83-155-47.compute-1.amazonaws.com:5000/api/v1/twitter?symbol=twtr").read)).first[1]
     if tweets
       tweets = tweets.map do |tweet|
-        { name: tweet["username"], body: CGI.unescapeHTML(tweet["twit"]) }
+        { name: tweet["username"], body: CGI.unescapeHTML(tweet["tweet"]) }
       end
     end
     send_event('twitter_mentions', comments: tweets)
