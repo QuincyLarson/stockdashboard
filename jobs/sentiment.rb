@@ -7,8 +7,10 @@ SCHEDULER.every '30m', :first_in => 0 do |job|
       sentiment = sentiment.map do |sentiment|
         if sentiment == "positive"
             color = "#00FF00"
+        end
         if sentiment == "negative"
             color = "#FF0000"
+        end
       end
     end
     send_event('twitter_sentiment', color: color)
